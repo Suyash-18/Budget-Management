@@ -13,37 +13,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito+Sans:opsz,wght@6..12,500&family=Raleway:wght@200&family=Syne:wght@500;700&family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="input">
-            <div class="box total">
-                <h3>Budget</h3>
-                <input type="text" inputmode="numeric" name="budget" id="totalBudget" class="inputValue totalBudget" placeholder="Enter your Budget...">
-                <button type="submit" id="totalBudget" class="inputBtn totalBudgetBtn">Set Budget</button>
+    <section class="main">
+        <div class="container">
+            <div class="input">
+                <div class="box total">
+                    <h3>Budget</h3>
+                    <input type="text" inputmode="numeric" name="budget" id="totalBudget" class="inputValue totalBudget" placeholder="Enter your Budget...">
+                    <button type="submit" id="totalBudget" class="inputBtn totalBudgetBtn">Set Budget</button>
+                </div>
+                <div class="box expense">
+                    <h3>Expense</h3>
+                    <input type="text" name="expense" id="expenseBudget" class="inputValue expenseReason" placeholder="Enter your Expense...">
+                    <input type="text" inputmode="numeric" name="expense" id="expenseBudget" class="inputValue expenseValue" placeholder="Enter cost of expense...">
+                    <button type="submit" id="expenseBudget" class="inputBtn expenseBudgetbtn">Check Amount</button>
+                </div>
             </div>
-            <div class="box expense">
-                <h3>Expense</h3>
-                <input type="text" name="expense" id="expenseBudget" class="inputValue expenseReason" placeholder="Enter your Expense...">
-                <input type="text" inputmode="numeric" name="expense" id="expenseBudget" class="inputValue expenseValue" placeholder="Enter cost of expense...">
-                <button type="submit" id="expenseBudget" class="inputBtn expenseBudgetbtn">Check Amount</button>
+            <div class="budget">
+                <ul class="count">
+                    <li class="counter">Total</li>
+                    <li class="counter">Expense</li>
+                    <li class="counter">Balance</li>
+                </ul>
+                <ul class="count">
+                    <li class="counter totalCount">0</li>
+                    <li class="counter expenseCount">0</li>
+                    <li class="counter balanceCount">0</li>
+                </ul>
+            </div>
+            <div class="expenseList">
+                <h3>Expense List</h3>
+                <ul class="expenseUl"></ul>
             </div>
         </div>
-        <div class="budget">
-            <ul class="count">
-                <li class="counter">Total</li>
-                <li class="counter">Expense</li>
-                <li class="counter">Balance</li>
-            </ul>
-            <ul class="count">
-                <li class="counter totalCount">0</li>
-                <li class="counter expenseCount">0</li>
-                <li class="counter balanceCount">0</li>
-            </ul>
-        </div>
-        <div class="expenseList">
-            <h3>Expense List</h3>
-            <ul class="expenseUl"></ul>
-        </div>
-    </div>
+    </section>
     <script src="app.js"></script>
 </body>
 </html>

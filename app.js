@@ -13,7 +13,6 @@ totalBudget.focus();
 totalBudget.addEventListener("keypress",(e) => {
     if (e.key == "Enter") {
         setTotalCount();
-        expenseReason.focus();
     }
 });
 
@@ -26,7 +25,6 @@ expenseReason.addEventListener("keypress",(e) => {
 expenseValue.addEventListener("keypress",(e) => {
     if (e.key == "Enter") {
         setExpenseCount();
-        expenseReason.focus();
     }
 });
 
@@ -47,7 +45,8 @@ function setTotalCount() {
         balanceCount.innerText = parseInt(totalCount.innerText) - parseInt(expenseCount.innerText);
         console.log(balanceCount.innerText);
     }
-    totalBudget.value = "";    
+    totalBudget.value = "";   
+    expenseReason.focus(); 
 }
 function setExpenseCount() {
     let expense = parseInt(expenseCount.innerText) + parseInt(expenseValue.value );
@@ -65,7 +64,7 @@ function setExpenseCount() {
         balanceCount.innerText = parseInt(totalCount.innerText) - parseInt(expenseCount.innerText);
     }
     addToExpenseList();
-    
+    expenseReason.focus();
 }
 
 function addToExpenseList() {
