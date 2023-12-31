@@ -133,9 +133,10 @@ h3{
     height: 1.5em;
     width: 95%;
     display: flex;
-    border: solid 2px #12121256;
+    border: solid 1px #12121256;
     border-radius: 5px;
     justify-content: space-between;
+    cursor: grab;
     padding: 10px;
     margin: 5px 0;
 }
@@ -157,4 +158,10 @@ h3{
 .btn:hover{
     background-position: right;
     cursor: pointer;
+}
+
+
+.dragging :where(p, div){
+    opacity: 0;
+    cursor: grabbing;
 }

@@ -8,6 +8,28 @@ let expenseCount = document.querySelector(".expenseCount")
 let balanceCount = document.querySelector(".balanceCount")
 let expenseUl = document.querySelector(".expenseUl")
 
+totalBudget.focus();
+
+totalBudget.addEventListener("keypress",(e) => {
+    if (e.key == "Enter") {
+        setTotalCount();
+        expenseReason.focus();
+    }
+});
+
+expenseReason.addEventListener("keypress",(e) => {
+    if (e.key == "Enter") {
+        expenseValue.focus();
+    }
+});
+
+expenseValue.addEventListener("keypress",(e) => {
+    if (e.key == "Enter") {
+        setExpenseCount();
+        expenseReason.focus();
+    }
+});
+
 totalBudgetBtn.addEventListener("click", () => {
     setTotalCount();
 });
@@ -36,14 +58,14 @@ function setExpenseCount() {
         alert("Enter Budget before Expense");
         return;
     }else{
-
+        
         console.log(`Total = ${totalCount.innerText} `);
         console.log(expense);
         expenseCount.innerText = expense;
         balanceCount.innerText = parseInt(totalCount.innerText) - parseInt(expenseCount.innerText);
     }
     addToExpenseList();
-
+    
 }
 
 function addToExpenseList() {
@@ -60,6 +82,7 @@ function addToExpenseList() {
     listOption.appendChild(listEdit);
     listOption.appendChild(listDelete);
     listItem.classList.add("block");
+    listItem.setAttribute("draggable",true);
     listOption.classList.add("options");
     listEdit.classList.add("fa-solid", "fa-pen-to-square", "edit","btn");
     listDelete.classList.add("fa-solid", "fa-trash-can", "delete","btn");
@@ -67,6 +90,29 @@ function addToExpenseList() {
     listExpenseValue.innerText = expenseValue.value;
     expenseReason.value = "";
 
+    let li = expenseUl.querySelectorAll("li");
+    li.forEach(lis => {
+        lis.addEventListener("dragstart" ,() => {
+            setTimeout(() => lis.classList.add("dragging"),0);
+        });    
+        lis.addEventListener("dragend" ,() => {
+            lis.classList.remove("dragging");
+        });    
+    });
+
+    const initSortableList = (e) => {
+        e.preventDefault();
+        const dragging = expenseUl.querySelector(".dragging");
+        const notDragging = [...expenseUl.querySelectorAll("li:not(.dragging)")];
+        let nextNotDragging = notDragging.find(notDraggings => {
+            return e.clientY <= notDraggings.offsetTop + notDraggings.offsetHeight / 2;
+        })
+
+        expenseUl.insertBefore(dragging , nextNotDragging)
+    }
+
+    expenseUl.addEventListener("dragover", initSortableList);
+    
     listEdit.addEventListener("click", () => {
         expenseCount.innerText = parseInt(expenseCount.innerText) - parseInt(listExpenseValue.innerText);
         balanceCount.innerText = parseInt(balanceCount.innerText) + parseInt(listExpenseValue.innerText);
@@ -74,6 +120,7 @@ function addToExpenseList() {
         console.log(expenseCount);
         expenseValue.value = listExpenseValue.innerText;
         expenseUl.removeChild(listItem);
+        expenseReason.focus();
     });
     listDelete.addEventListener("click", () => {
         expenseCount.innerText = parseInt(expenseCount.innerText) - parseInt(listExpenseValue.innerText);
