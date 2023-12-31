@@ -163,5 +163,46 @@ h3{
 
 .dragging :where(p, div){
     opacity: 0;
-    cursor: grabbing;
+}
+
+@media (max-width: 700px){
+    .input{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .box{
+        margin-top: 10px;
+        width: 95%;
+        height: 8em;
+        
+    }
+    
+    .expense{
+        height: 11em;
+    }
+    
+    .container{
+        width: 80%;
+        position: relative;
+        bottom: 90px;
+    }
+    
+    .budget{
+        margin-top: 1em;
+    }
+    
+    .expenseList{
+        margin-top: 1em;
+        width: 95%;
+    }
+
+    .block{
+        width: 90%;
+    }
+
+    .options{
+        width: 30%;
+    }
+
 }
