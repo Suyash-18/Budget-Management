@@ -48,6 +48,7 @@ function setTotalCount() {
     totalBudget.value = "";   
     expenseReason.focus(); 
 }
+
 function setExpenseCount() {
     let expense = parseInt(expenseCount.innerText) + parseInt(expenseValue.value );
     if (expenseValue.value == "" || expenseValue.value < 0 || expenseReason.value == "") {
