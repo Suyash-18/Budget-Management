@@ -208,6 +208,10 @@ h3{
         margin-top: 1em;
     }
     
+    body::-webkit-scrollbar{
+        display: none;
+    }
+    
     .expenseList{
         margin-top: 1em;
         width: 95%;
